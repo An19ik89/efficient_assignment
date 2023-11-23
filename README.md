@@ -1,11 +1,11 @@
 # efficient_assignmentLogin :
-Use esssumon@gmail.com and admin as user and password. Otherwise invalid login.
+Use ess@gmail.com and admin as user and password. Otherwise invalid login.
 Home page :
 By pressing custom order nagivate to the order form page. And by pressing feedback navigate to the feedback page.
   
 Order form page :
 The order form’s field will be dynamically populated from the API.
-API ref => https://formcreate.free.beeceptor.com/form (if API response not working use the respose.json provided)
+API ref => https://example/form (if API response not working use the respose.json provided)
 Here: ‘formName’ is the title of the order collection form
 There can be multiple sections in this form and each section will contain multiple fields.
 For each field view is different. Feel free to use any UI widget for that.
