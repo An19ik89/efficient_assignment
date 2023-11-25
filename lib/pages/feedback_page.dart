@@ -65,7 +65,6 @@ class _FeedBackPageState extends State<FeedBackPage> {
       );
     }
   }
-
   Future<void> _stopRecording() async {
     await record.stop();
     setState(() {
