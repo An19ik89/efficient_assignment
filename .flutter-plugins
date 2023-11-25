@@ -1,0 +1,26 @@
+# This is a generated file; do not edit or check into version control.
+audioplayers=/Users/anik/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/
+file_selector_linux=/Users/anik/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.2+1/
+file_selector_macos=/Users/anik/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.3+3/
+file_selector_windows=/Users/anik/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+1/
+flutter_email_sender=/Users/anik/.pub-cache/hosted/pub.dev/flutter_email_sender-6.0.2/
+flutter_plugin_android_lifecycle=/Users/anik/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/
+image_picker=/Users/anik/.pub-cache/hosted/pub.dev/image_picker-0.8.9/
+image_picker_android=/Users/anik/.pub-cache/hosted/pub.dev/image_picker_android-0.8.8+2/
+image_picker_for_web=/Users/anik/.pub-cache/hosted/pub.dev/image_picker_for_web-2.2.0/
+image_picker_ios=/Users/anik/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.8+4/
+image_picker_linux=/Users/anik/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.1+1/
+image_picker_macos=/Users/anik/.pub-cache/hosted/pub.dev/image_picker_macos-0.2.1+1/
+image_picker_windows=/Users/anik/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.1+1/
+path_provider=/Users/anik/.pub-cache/hosted/pub.dev/path_provider-2.1.1/
+path_provider_android=/Users/anik/.pub-cache/hosted/pub.dev/path_provider_android-2.2.1/
+path_provider_foundation=/Users/anik/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.1/
+path_provider_linux=/Users/anik/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/Users/anik/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/
+record=/Users/anik/.pub-cache/hosted/pub.dev/record-5.0.1/
+record_android=/Users/anik/.pub-cache/hosted/pub.dev/record_android-1.0.3/
+record_darwin=/Users/anik/.pub-cache/hosted/pub.dev/record_darwin-1.0.0/
+record_linux=/Users/anik/.pub-cache/hosted/pub.dev/record_linux-0.7.1/
+record_web=/Users/anik/.pub-cache/hosted/pub.dev/record_web-1.0.3/
+record_windows=/Users/anik/.pub-cache/hosted/pub.dev/record_windows-1.0.0/
+sqflite=/Users/anik/.pub-cache/hosted/pub.dev/sqflite-2.3.0/
