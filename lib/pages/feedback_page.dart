@@ -77,7 +77,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Voice Recorder Demo'),
+        title: const Text('Feedback Page'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
