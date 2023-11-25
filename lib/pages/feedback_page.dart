@@ -4,9 +4,12 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart' as recordPackage;
 
 class FeedBackPage extends StatefulWidget {
+  const FeedBackPage({super.key});
+
   @override
   _FeedBackPageState createState() => _FeedBackPageState();
 }
@@ -26,30 +29,41 @@ class _FeedBackPageState extends State<FeedBackPage> {
     _audioPlayer = AudioPlayer();
   }
 
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
   Future<void> _pickImage() async {
-    final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
 
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
       } else {
-        print('No image selected.');
+        debugPrint('No image selected.');
       }
     });
   }
 
   Future<void> _startRecording() async {
-    // if (await PermissionsPlugin.requestPermissions([
-    //   Permission.RECORD_AUDIO,
-    //   Permission.WRITE_EXTERNAL_STORAGE,
-    // ])) {
+    var statusMicrophone = await Permission.microphone.request();
+    var statusStorage = await Permission.storage.request();
+    //await Permission.microphone.request().isGranted && await Permission.storage.request().isGranted
+    if (statusMicrophone.isGranted && statusStorage.isGranted) {
       String path = await getTemporaryDirectory().then((dir) => '${dir.path}/recording.wav');
       await record.start(const recordPackage.RecordConfig(),path: path.toString());
       setState(() {
         _isRecording = true;
         _audioFilePath = path;
       });
-   // }
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please allow microphone & storage')),
+      );
+    }
   }
 
   Future<void> _stopRecording() async {
@@ -58,12 +72,13 @@ class _FeedBackPageState extends State<FeedBackPage> {
       _isRecording = false;
     });
   }
-
   Future<void> _playRecording() async {
     if (!_isPlaying) {
-      await _audioPlayer.play(_audioFilePath, isLocal: true);
-      setState(() {
-        _isPlaying = true;
+      await _audioPlayer.play(_audioFilePath as Source, mode: PlayerMode.mediaPlayer);
+      _audioPlayer.onPlayerComplete.listen((event) {
+        setState(() {
+          _isPlaying = false;
+        });
       });
     } else {
       await _audioPlayer.stop();
@@ -72,6 +87,20 @@ class _FeedBackPageState extends State<FeedBackPage> {
       });
     }
   }
+
+  // Future<void> _playRecording() async {
+  //   if (!_isPlaying) {
+  //     await _audioPlayer.play(_audioFilePath, isLocal: true);
+  //     setState(() {
+  //       _isPlaying = true;
+  //     });
+  //   } else {
+  //     await _audioPlayer.stop();
+  //     setState(() {
+  //       _isPlaying = false;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -85,16 +114,16 @@ class _FeedBackPageState extends State<FeedBackPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-              decoration: InputDecoration(labelText: 'Enter Text'),
+              decoration: const InputDecoration(labelText: 'Enter Text'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               children: [
                 ElevatedButton(
                   onPressed: _pickImage,
-                  child: Text('Pick Photo'),
+                  child: const Text('Pick Photo'),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 _image != null
                     ? Image.file(
                   _image!,
@@ -105,26 +134,26 @@ class _FeedBackPageState extends State<FeedBackPage> {
                     : Container(),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               children: [
                 _isRecording
                     ? IconButton(
-                  icon: Icon(Icons.stop),
+                  icon: const Icon(Icons.stop),
                   onPressed: _stopRecording,
                 )
                     : IconButton(
-                  icon: Icon(Icons.mic),
+                  icon: const Icon(Icons.mic),
                   onPressed: _startRecording,
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 _audioFilePath.isNotEmpty
                     ? ElevatedButton(
                   onPressed: _playRecording,
                   child: Text(_isPlaying ? 'Stop Playing' : 'Play Recording'),
                 )
                     : Container(),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 _audioFilePath.isNotEmpty
                     ? Text('Recorded File: ${_audioFilePath.split('/').last}')
                     : Container(),

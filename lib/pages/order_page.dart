@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart' as DIO;
 import 'package:efficient_flutter_task/pages/home_page.dart';
 import 'package:efficient_flutter_task/styles/text_styles.dart';
 import 'package:efficient_flutter_task/widgets/buttons.dart';
@@ -32,13 +33,29 @@ class _OrderPageState extends State<OrderPage> {
   String selectedValue = "initialValue";
   String setWidgetState = "";
 
-  _loadData() async {
-    String jsonContent = await rootBundle.loadString('assets/json/response.json');
-    formData = FormData.fromJson(json.decode(jsonContent));
-    csvData = await CsvLoader.loadCsv('assets/csv/fruit_prices.csv');
-    setState(() {
+  final dio = DIO.Dio();
 
-    });
+  _loadData() async {
+
+    final response = await dio.get('https://formcreate.free.beeceptor.com/form');
+
+    if(response.statusCode == 200){
+      formData = FormData.fromJson(response.data);
+    }
+    else{
+      String jsonContent = await rootBundle.loadString('assets/json/response.json');
+      formData = FormData.fromJson(json.decode(jsonContent));
+      csvData = await CsvLoader.loadCsv('assets/csv/fruit_prices.csv');
+    }
+    setState(() {});
+  }
+
+
+
+  void getHttp() async {
+
+
+
   }
 
   @override
@@ -52,6 +69,7 @@ class _OrderPageState extends State<OrderPage> {
     selectedValue = "initialValue";
     setWidgetState = "";
     _loadData();
+    getHttp();
     super.initState();
   }
 

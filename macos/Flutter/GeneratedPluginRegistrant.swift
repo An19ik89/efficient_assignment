@@ -5,14 +5,14 @@
 import FlutterMacOS
 import Foundation
 
-import audioplayers
+import audioplayers_darwin
 import file_selector_macos
 import path_provider_foundation
 import record_darwin
 import sqflite
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  AudioplayersPlugin.register(with: registry.registrar(forPlugin: "AudioplayersPlugin"))
+  AudioplayersDarwinPlugin.register(with: registry.registrar(forPlugin: "AudioplayersDarwinPlugin"))
   FileSelectorPlugin.register(with: registry.registrar(forPlugin: "FileSelectorPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   RecordPlugin.register(with: registry.registrar(forPlugin: "RecordPlugin"))

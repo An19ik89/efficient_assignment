@@ -12,12 +12,14 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   csv: ^5.1.1
-  image_picker: ^0.8.4
-  path_provider: ^2.0.3
-  audioplayers: ^0.20.1
+  image_picker: ^1.0.4
+  path_provider: ^2.1.1
+  audioplayers: ^5.2.1
   record: ^5.0.1
   cached_network_image: ^3.3.0
   flutter_email_sender: ^6.0.2
+  dio: ^5.3.4
+  permission_handler: ^11.0.1
 
 
 dev_dependencies:
