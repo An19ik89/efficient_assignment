@@ -41,6 +41,7 @@ class _OrderPageState extends State<OrderPage> {
 
     if(response.statusCode == 200){
       formData = FormData.fromJson(response.data);
+      csvData = await CsvLoader.loadCsv('assets/csv/fruit_prices.csv');
     }
     else{
       String jsonContent = await rootBundle.loadString('assets/json/response.json');
