@@ -341,7 +341,6 @@ class _OrderPageState extends State<OrderPage> {
     } else if (dataColumnKeyword == "CupEquivalentUnit") {
       setState(() {
         columnData = extractColumn(csvData, 7);
-        log("Column data : $columnData");
         columnData.removeAt(0);
         selectedValue = columnData[0].toString();
         setWidgetState = fieldKey;
