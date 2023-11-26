@@ -51,14 +51,6 @@ class _OrderPageState extends State<OrderPage> {
     setState(() {});
   }
 
-
-
-  void getHttp() async {
-
-
-
-  }
-
   @override
   void initState() {
     formDataForStore = {};
@@ -70,7 +62,6 @@ class _OrderPageState extends State<OrderPage> {
     selectedValue = "initialValue";
     setWidgetState = "";
     _loadData();
-    getHttp();
     super.initState();
   }
 
@@ -144,7 +135,7 @@ class _OrderPageState extends State<OrderPage> {
                     height: 30,
                   ),
                   setWidgetState == "viewText_1" ||
-                      productTypeTextEditingController.text ==
+                      setWidgetState ==
                           "viewText_2"
                       ? Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -350,6 +341,7 @@ class _OrderPageState extends State<OrderPage> {
     } else if (dataColumnKeyword == "CupEquivalentUnit") {
       setState(() {
         columnData = extractColumn(csvData, 7);
+        log("Column data : $columnData");
         columnData.removeAt(0);
         selectedValue = columnData[0].toString();
         setWidgetState = fieldKey;
